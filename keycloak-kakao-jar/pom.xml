@@ -3,7 +3,7 @@
   <parent>
     <groupId>org.keycloak.extensions</groupId>
     <artifactId>keycloak-kakao</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
+    <version>0.0.1</version>
   </parent>
   
   <artifactId>keycloak-kakao-jar</artifactId>

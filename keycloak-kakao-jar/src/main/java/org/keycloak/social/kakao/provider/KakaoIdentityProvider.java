@@ -21,7 +21,7 @@ public class KakaoIdentityProvider extends AbstractOAuth2IdentityProvider<OAuth2
 	public static final String TOKEN_URL = "https://kauth.kakao.com/oauth/token";
 	public static final String PROFILE_URL = "https://kapi.kakao.com/v2/user/me";
 	public static final String EMAIL_SCOPE = "account_email";
-	public static final String DEFAULT_SCOPE = "profile" + EMAIL_SCOPE;
+	public static final String DEFAULT_SCOPE = "profile " + EMAIL_SCOPE;
 
 
 	public KakaoIdentityProvider(KeycloakSession session, OAuth2IdentityProviderConfig config) {
@@ -53,6 +53,7 @@ public class KakaoIdentityProvider extends AbstractOAuth2IdentityProvider<OAuth2
 
 		final BrokeredIdentityContext user = new BrokeredIdentityContext(getJsonProperty(profile, "id"));
 
+		user.setUsername(getJsonProperty(account, "email"));
 		user.setName(getJsonProperty(properties, "nickname"));
 		user.setEmail(getJsonProperty(account, "email"));
 		user.setIdpConfig(getConfig());
